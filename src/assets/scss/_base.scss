@@ -1,0 +1,79 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css?family=Righteous|Roboto+Condensed:400,700');
+
+$primary-color: #f0f0f0;
+$secondary-color: #ff5d5d;
+$white-color: #fff;
+$text-color: #313131;
+
+$main-font-family: 'Roboto Condensed', sans-serif;
+$title-font-family: 'Righteous', cursive, $main-font-family;
+
+@mixin clearFix {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@mixin animated {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+@mixin animatedFast {
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+@mixin optional-at-root($sel) {
+    @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+        @content;
+    }
+}
+
+@mixin placeholder {
+    @include optional-at-root('::-webkit-input-placeholder') {
+        @content;
+    }
+
+    @include optional-at-root(':-moz-placeholder') {
+        @content;
+    }
+
+    @include optional-at-root('::-moz-placeholder') {
+        @content;
+    }
+
+    @include optional-at-root(':-ms-input-placeholder') {
+        @content;
+    }
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+body{
+    background: $primary-color;
+}
+
+.btn:focus, .btn.focus{
+    -webkit-box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25);
+}
+
+
+.btn-red{
+    background-color: $secondary-color;
+    color: $white-color;
+}
+
+.btn-wishlist{
+    background-color: $white-color;
+    color: $secondary-color;
+}
